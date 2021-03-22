@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'graphql_auth',
     'django_filters',
     'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
+    'server.accounts',
 ]
 
 MIDDLEWARE = [
@@ -87,15 +88,15 @@ CACHEOPS = {
     'auth.user': {'ops': 'get', 'timeout': 60*15},
 }
 
-#AUTH_USER_MODEL = 'users.User'
-#USERNAME_FIELD = 'email'
-#AUTHENTICATION_METHOD = 'email'
-#UNIQUE_EMAIL = True
-#EMAIL_REQUIRED = True
-#ACCOUNT_AUTHENTICATION_METHOD = 'email'
-#ACCOUNT_UNIQUE_EMAIL = True
-#ACCOUNT_EMAIL_REQUIRED = True
-#ACCOUNT_USERNAME_REQUIRED = False
+AUTH_USER_MODEL = 'accounts.User'
+USERNAME_FIELD = 'email'
+AUTHENTICATION_METHOD = 'email'
+UNIQUE_EMAIL = True
+EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
 
 AUTH_PASSWORD_VALIDATORS = [
     {
