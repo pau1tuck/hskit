@@ -8,6 +8,7 @@ class Course(models.Model):
         primary_key=True, serialize=False, verbose_name='ID')
     name = models.CharField(max_length=256)
     slug = models.SlugField(max_length=32)
+    description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     image = VersatileImageField(
         upload_to='images/course-images', blank=True, null=True)
@@ -21,9 +22,9 @@ class Stage(models.Model):
     stage_id = models.SmallIntegerField()
     name = models.CharField(max_length=256)
     slug = models.SlugField(max_length=32)
+    description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True, editable=True)
-
     image = VersatileImageField(
         upload_to='images/stage-images', blank=True, null=True)
     banner = VersatileImageField(
@@ -36,6 +37,7 @@ class Level(models.Model):
     level_id = models.SmallIntegerField()
     name = models.CharField(max_length=256, blank=True)
     slug = models.SlugField(max_length=32)
+    description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True, editable=True)
     image = VersatileImageField(
@@ -62,8 +64,7 @@ class Vocabulary(models.Model):
 
 class Vocabulary_Group(models.Model):
     lesson_id = models.IntegerField()
-    character = models.ForeignKey(
-        Vocabulary, on_delete=models.CASCADE)
+    character = models.ManyToManyField(Vocabulary)
 
     def __str__(self):
         return '%d' % (self.lesson_id)
