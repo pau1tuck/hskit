@@ -1,21 +1,12 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import React from "react";
 
-export const theme = createMuiTheme({
-    overrides: {
-        MuiCssBaseline: {
-            "@global": {
-                body: {
-                    backgroundColor: "none",
-                },
-            },
-        },
-    },
-    palette: {
-        primary: {
-            main: "#005089",
-        },
-        secondary: {
-            main: "#008b8b",
-        },
-    },
+export const lightTheme = {
+  fg: "palevioletred",
+  bg: "white"
+};
+
+// This theme swaps `fg` and `bg`
+export const darkTheme = ({ fg, bg }) => ({
+  fg: bg,
+  bg: fg
 });
